@@ -20,8 +20,9 @@ export class User {
     phone: string = "+38160666666";
     mail: string = "dummy@gmail.com";
     dateOfBirth: string = "01.01.2001.";
+    my_clubs: number[];
 
-    constructor(id: number, username: string, name: string, last_name: string, gender: Gender, pp_points: number) {
+    constructor(id: number, username: string, name: string, last_name: string, gender: Gender, pp_points: number, my_clubs: number[]) {
         this.id = id;
         this.username = username;
         this.name = name;
@@ -31,5 +32,6 @@ export class User {
         this.wins = Math.trunc((Math.random() * 200));
         this.loses = Math.trunc((Math.random() * 200));
         this.points = Math.trunc((Math.random() * 2000));
+        this.my_clubs = my_clubs;
     }
 }

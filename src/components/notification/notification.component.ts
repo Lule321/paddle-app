@@ -121,7 +121,7 @@ export class NotificationComponent {
 
   async getPlayersInfo(playerIds: number[]): Promise<User[]> {
     return Promise.all(playerIds.map(id =>
-      this.users.find(user => user.id === id) || new User(id, 'Unknown', id.toString(), 'Unknown', 0, 0)
+      this.users.find(user => user.id === id) || new User(id, 'Unknown', id.toString(), 'Unknown', 0, 0, [0])
     ));
   }
 
@@ -157,5 +157,8 @@ export class NotificationComponent {
 
   }
 
+  goToClubMembership() {
+    this.routerService.navigateTo('club-membership');
+  }
 
 }

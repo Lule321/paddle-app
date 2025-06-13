@@ -9,6 +9,9 @@ import { ConfirmationComponent } from '../components/confirmation/confirmation.c
 import { SearchPlayersComponent } from '../components/search-players/search-players.component';
 import { NotificationComponent } from '../components/notification/notification.component';
 import { MatchHistoryComponent } from '../components/match-history/match-history.component';
+import { ClubMembershipComponent } from '../components/club-membership/club-membership.component';
+import { MyClubComponent } from '../components/my-club/my-club.component';
+import { PromotionsComponent } from '../components/promotions/promotions.component';
 
 export const routes: Routes = [
     {path: 'home', component:HomeComponent},
@@ -21,4 +24,7 @@ export const routes: Routes = [
     {path: 'search-players/:idx', component:SearchPlayersComponent},
     {path: 'notification', component:NotificationComponent},
     {path: 'match-history', component:MatchHistoryComponent},
+    {path: 'club-membership', component:ClubMembershipComponent},
+    {path: 'my-club/:id', component:MyClubComponent},
+    {path: 'promotions/:idClub', component:PromotionsComponent}
 ];
