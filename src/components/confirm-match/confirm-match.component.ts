@@ -23,7 +23,7 @@ export class ConfirmMatchComponent {
   courtReservation: CourtReservation = this.localStorageService.getItem("courtReservation") as CourtReservation;
   courtReservations: CourtReservation[] = this.localStorageService.getItem("courtReservations") as CourtReservation[];
   users: User[] = this.localStorageService.getItem("users") as User[];
-  selectedMatchType: string = this.courtReservation.player_ids.length == 2 ? 'single' : 'double';
+  selectedMatchType: string = this.courtReservation.type;
   courts: Court[] = this.localStorageService.getItem("courts") as Court[];
   yourMatchComponent: boolean = false;
   matchStarted: boolean = false;
@@ -35,7 +35,8 @@ export class ConfirmMatchComponent {
     if (this.route.toString().includes("your-match")) {
       this.yourMatchComponent = true;
       this.courtReservation = this.localStorageService.getItem("match") as CourtReservation;
-      this.selectedMatchType = this.courtReservation.player_ids.length == 2 ? 'single' : 'double';
+      // this.selectedMatchType = this.courtReservation.player_ids.length == 2 ? 'single' : 'double';
+      this.selectedMatchType = this.courtReservation.type;
       // console.log(this.courtReservation);
 
       for (let i = 0; i < this.courtReservation.sets.length; i++) {

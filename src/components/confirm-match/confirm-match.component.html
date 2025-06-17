@@ -3,11 +3,11 @@
         Your match
     </div>
     <div id="chosen-players">
-        @if(selectedMatchType == 'double') {
+        <!-- @if(selectedMatchType == 'double') { -->
             <div> My team vs opponents </div>
-        } @else {
-            <div>Me vs opponent</div>
-        }
+        <!-- } @else { -->
+            <!-- <div>Me vs opponent</div> -->
+        <!-- } -->
         <div class="opposing-div">
             <div>
                 1. <span class="choose-player-span" (click)="choosePlayer(0)">{{playerName(0)}}</span>
@@ -16,7 +16,7 @@
                 1. <span class="choose-player-span">{{playerName(1)}}</span>
             </div>
         </div>
-        @if(selectedMatchType == 'double') {
+        <!-- @if(selectedMatchType == 'double') { -->
             <div class="opposing-div">
                 <div (click)="choosePlayer(2)">
                     2. <span class="choose-player-span">{{playerName(2)}}</span>
@@ -25,7 +25,7 @@
                     2. <span class="choose-player-span">{{playerName(3)}}</span>
                 </div>
             </div>
-        }
+        <!-- } -->
     </div>
     
     @if (!yourMatchComponent || !courtReservation.started) {
@@ -33,10 +33,10 @@
 
             <div class="match-info">
                 <span class="match-info-span">Match info:</span>
-                @if(selectedMatchType == 'double') {
-                    <span>Double</span>
+                @if(selectedMatchType == 'public') {
+                    <span>Public</span>
                 } @else {
-                    <span>Single</span>
+                    <span>Private</span>
                 }
             </div>
             <div class="match-info">

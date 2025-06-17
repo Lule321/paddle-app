@@ -26,7 +26,7 @@ export class BookACourtComponent {
   court?: Court;
   courtTimes: AvailableTime[] = [];
   chosenDate: string = "";
-  selectedMatchType: string = "single";
+  selectedMatchType: string = "public";
   courtReservation: CourtReservation = new CourtReservation(-1, -1, "", -1, [-1, -1], 0);
   courtReservations: CourtReservation[] = this.localStorageService.getItem("courtReservations") as CourtReservation[];
   currentUser: User = this.localStorageService.getItem("currentUser") as User;
@@ -56,6 +56,9 @@ export class BookACourtComponent {
     let now = new Date();
     for (let courtReservation of this.courtReservations) {
       if (courtReservation.started || courtReservation.finished)
+        continue;
+
+      if (courtReservation.type == "private")
         continue;
 
       let hasEmptySpace = false;
@@ -102,8 +105,9 @@ export class BookACourtComponent {
           new CourtReservation(this.court!.id, -1, this.chosenDate, -1, [this.currentUser.id, -1], 0)
         )
       } else {
-        this.selectedMatchType = (this.localStorageService.getItem("courtReservation") as CourtReservation).player_ids.length == 2 
-            ? 'single' : 'double';
+        this.selectedMatchType = (this.localStorageService.getItem("courtReservation") as CourtReservation).type;
+        // (this.localStorageService.getItem("courtReservation") as CourtReservation).player_ids.length == 2 
+        //     ? 'single' : 'double';
       }
 
       this.initAvailableMatches();
@@ -177,11 +181,13 @@ export class BookACourtComponent {
   onSelectionChange(event: Event) {
     // console.log(this.selectedMatchType);
     let courtReservation = this.localStorageService.getItem("courtReservation") as CourtReservation;
-    if (this.selectedMatchType == "single" && courtReservation.player_ids.length == 4)
-      courtReservation.player_ids = [courtReservation.player_ids[0], courtReservation.player_ids[1]]
-    else if(this.selectedMatchType == "double" && courtReservation.player_ids.length == 2)
-        courtReservation.player_ids = [courtReservation.player_ids[0], courtReservation.player_ids[1], -1, -1];
+    // if (this.selectedMatchType == "single" && courtReservation.player_ids.length == 4)
+    //   courtReservation.player_ids = [courtReservation.player_ids[0], courtReservation.player_ids[1]]
+    // else if(this.selectedMatchType == "double" && courtReservation.player_ids.length == 2)
+    //     courtReservation.player_ids = [courtReservation.player_ids[0], courtReservation.player_ids[1], -1, -1];
     
+    courtReservation.type = this.selectedMatchType;
+
     this.localStorageService.setItem("courtReservation", courtReservation);
     this.checkCanConfirmMatch();
   }

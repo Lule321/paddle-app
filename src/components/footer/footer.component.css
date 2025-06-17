@@ -33,13 +33,20 @@
 }
 
 .footer-icon {
+    padding: 2vh;
 }
 
 .footer-icon-img {
-    object-fit: cover;
-    height: 12vh;
+    object-fit: contain;
+    height: 7vh;
+    width: 7vh;
 }
 
 #head-padding {
     height: 10vh;
+}
+
+.icon-label {
+    font-size: 1.5vh;
+    text-align: center;
 }

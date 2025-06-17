@@ -19,18 +19,22 @@
 
         <div id="select-match-type-div">
             Select match type: 
-            <select name="selectMatchType" id="select-match-type" [(ngModel)]="selectedMatchType" (ngModelChange)="onSelectionChange($event)">
+            <!-- <select name="selectMatchType" id="select-match-type" [(ngModel)]="selectedMatchType" (ngModelChange)="onSelectionChange($event)">
                 <option [value]="'single'">Single</option>
                 <option [value]="'double'">Double</option>
+            </select> -->
+            <select name="selectMatchType" id="select-match-type" [(ngModel)]="selectedMatchType" (ngModelChange)="onSelectionChange($event)">
+                <option [value]="'public'">Public</option>
+                <option [value]="'private'">Private</option>
             </select>
         </div>
 
         <div id="choose-players">
-            @if(selectedMatchType == 'double') {
+            <!-- @if(selectedMatchType == 'double') { -->
                 <div> My team vs opponents </div>
-            } @else {
+            <!-- } @else {
                 <div>Me vs opponent</div>
-            }
+            } -->
             <div class="opposing-div">
                 <div>
                     1. <span class="choose-player-span">Me</span>
@@ -39,7 +43,7 @@
                     1. <span class="choose-player-span">{{playerName(1)}}</span>
                 </div>
             </div>
-            @if(selectedMatchType == 'double') {
+            <!-- @if(selectedMatchType == 'double') { -->
                 <div class="opposing-div">
                     <div (click)="choosePlayer(2)">
                         2. <span class="choose-player-span">{{playerName(2)}}</span>
@@ -48,7 +52,7 @@
                         2. <span class="choose-player-span">{{playerName(3)}}</span>
                     </div>
                 </div>
-            }
+            <!-- } -->
         </div>
         <div id="choose-date">
             Select date:
