@@ -27,7 +27,7 @@ export class BookACourtComponent {
   courtTimes: AvailableTime[] = [];
   chosenDate: string = "";
   selectedMatchType: string = "public";
-  courtReservation: CourtReservation = new CourtReservation(-1, -1, "", -1, [-1, -1], 0);
+  courtReservation: CourtReservation = new CourtReservation(-1, -1, "", -1, [-1, -1, -1, -1], 0);
   courtReservations: CourtReservation[] = this.localStorageService.getItem("courtReservations") as CourtReservation[];
   currentUser: User = this.localStorageService.getItem("currentUser") as User;
   users: User[] = this.localStorageService.getItem("users") as User[];
@@ -102,7 +102,7 @@ export class BookACourtComponent {
           (this.localStorageService.getItem("courtReservation") as CourtReservation).court_id != this.court!.id) {
         this.localStorageService.setItem(
           "courtReservation",
-          new CourtReservation(this.court!.id, -1, this.chosenDate, -1, [this.currentUser.id, -1], 0)
+          new CourtReservation(this.court!.id, -1, this.chosenDate, -1, [this.currentUser.id, -1, -1, -1], 0)
         )
       } else {
         this.selectedMatchType = (this.localStorageService.getItem("courtReservation") as CourtReservation).type;
